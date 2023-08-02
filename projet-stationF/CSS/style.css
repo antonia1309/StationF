@@ -1,0 +1,233 @@
+/* Reset: on réinitialise (efface) les styles par défaut du navigateur*/
+a{
+  text-decoration: none;/* enlève le soulignement de tous mes a*/
+  color: inherit;/*inherit veut dire prends la valeur du parent*/
+}
+
+ul, ol{
+  list-style: none;/* tous mes futures ul et ol n'auront pas de puces/defaut*/
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;/*va diminuer la taille de son enfant
+  l'autre valeur c contain-box box s adapte à la taille de son contenu */
+}
+html{
+  scroll-behavior: smooth;/*pour scroller doucement lors de la descente vers une section
+  de la mm page -avec les a href*/
+}
+
+/*Style général*/
+* {
+  font-family: 'Cabin', sans-serif;
+}
+.flux { /* on crée une class flux pour gérer les marges à gauche et droite de la page*/
+  margin-left: 75px;
+  margin-right: 75px;
+}/*on va mettre cette class dans le header et section*/
+/*on a mis dans section au lieu de main car bloc en dessous prendra tte 
+la largeur de la page donc pas besojn de cette marge 
+et donc on a ciblé que la section*/
+
+@media (max-width: 500px){/* pour les mobiles*/
+  .flux {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+}
+.title-2{
+  font-size: 40px;
+  margin-bottom: 20px;
+  line-height: 1.25;/*espace entre les lignes*/
+
+}
+.text-paragraph{
+  line-height: 1.5;/*espace entre les lignes
+   mais pour l'espace entre les lettres letter-spacing*/
+
+}
+.button{
+  text-transform: uppercase;
+  color: white;
+  border-radius: 20px;
+  background-color:black;
+  padding: 10px 20px;
+  display: inline-block;/*mon elt s adapte en fontion à la taille de mon contenu*/
+
+}
+.button-orange{
+  background:linear-gradient(90deg,rgb(224, 61, 181),#ffb800 50% 100%);
+  background-size: 200% 100%;
+  background-position: left;
+  transition: all 0.25s;
+
+}
+.button-orange:hover{
+  background-position: right;
+}
+.button-black{
+  background-color: black;
+  transition: background-color 0.25s;
+
+}
+.button-black:hover{
+  background-color: grey;
+}
+
+/*START header*/
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+}
+.list-links{
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
+  font-size: 14px;
+  
+}
+.nav-link{
+  text-transform: uppercase;
+}
+/* concernant le .button, on peut aussi faire .nav-link: last-child a{} pour cibler 
+le a de la dernière li,
+on peut aussi utiliser :first-child pour cibler le 1er li et sinon pour le 
+mileu on fait nth-child(num ex 2){}*/
+
+.logo{
+  width: 125px;
+  height: 25px;
+
+}
+/*END header*/
+
+/*START Cover:la première section de la page*/
+.cover{
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 500px){/* pour les mobiles*/
+  .cover{
+    flex-direction: column;
+  }
+  
+}
+.image-office{
+  width: 55%;
+  flex-shrink: 0;/*ca veut dire que sa taille n'est pas rétrecicable*/
+  height: 250px;
+  object-fit: cover;/*va remplir mon bloc avec l'image*/
+  object-position: bottom;/*va tjrs faire apparaitre le bas de l'image */
+
+}
+
+.icon-scroll{
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;/* pour centrer la flèche à l'intérieur du rond*/
+  align-items: center;/* pour centrer la flèche à l'intérieur du rond*/
+  
+}
+
+.cover-title {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.cover-introduction {
+  margin-bottom: 30px;
+
+}
+.cover-text{
+  padding-right: 100px;
+}
+/*END Cover :la première section de la page*/
+
+/* START Programs: la deuxième section de la page */
+.programs{
+  background-color: #202020;
+  margin-top: 75px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+.programs .flux{ /*on cible uniquement le flux dans programs mais pas les autres flux*/
+  display: flex;
+  gap: 50px;
+}
+.programs .container-texts{
+  color: white;
+  display: flex;/*parent du p à déclarer pour pouv mettre flex à p après*/
+  flex-direction: column;/*on le rajoute car se met auto en ligne*/
+  align-items: flex-start;/*va mettre ts les elts au début à gauche*/
+
+}
+.programs .title-2{
+  width: 75%;  
+}
+.programs .container-texts .button{
+  margin-top: 50px;
+}
+
+.programs .container-texts p{
+  flex-grow: 1;/*je v que le p s'agrandisse au max pr pousser le button en bas*/
+}
+.programs .container-images{
+  display: flex;
+  flex-wrap: wrap;/* pour mettre les elts sur la mm ligne mais si 
+  pas de place va à la ligne*/
+  gap: 25px;
+
+}
+.programs .container-images li{
+  background-color: white;
+  border-radius: 15px;
+  width: calc(50% - 25px /2);/*on p utiliser du grid-le calcul c -25px du gap dans parent*/
+  height: 130px;
+  padding: 30px ;
+  
+}
+.programs .container-images li img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;/*image va s agrandir au max et ne va pas reduire*/
+}
+
+/* END Programs: la deuxième section de la page */
+
+/*START online:la troisième section de la page*/
+.online{
+  background: linear-gradient(180deg,#202020 0% 50%, white 50% 100%);
+/*pour créer la fausse continuité en noir sur les côtés*/
+}
+.online .online-content{
+  display: flex;
+  padding: 75px 50px 50px 50px;
+  background:linear-gradient(90deg,rgb(224, 61, 181),#ffb800);
+}
+.online img{
+  width: 50%;
+  padding-right: 50px;
+}
+.online .container-texts{
+  width: 50%;
+  color: white;
+}
+.online .container-texts a {
+  margin-top: 50px;
+}
+
+/*END online:la troisième section de la page*/
+
+
+
